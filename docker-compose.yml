@@ -13,6 +13,17 @@ services:
       - "50003:50003"
     networks:
       - dapr-network
+  member:
+    build: ./member
+    depends_on:
+      - redis
+      - placement
+    restart: unless-stopped
+    ports:
+      - "50004:50004"
+    networks:
+      - dapr-network
+  
   # publisherapp-dn:
   #   build: ./dapr-publisher-dotnet
   #   depends_on:

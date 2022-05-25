@@ -1,0 +1,56 @@
+syntax = "proto3";
+package members;
+
+service Membership {
+    rpc AddMember (AddMemberRequest) returns (AddMemberResponse);
+    rpc LicenseMember (LicenseMemberRequest) returns (LicenseMemberResponse);
+    rpc PrintCard (PrintCardRequest) returns (PrintResponse);
+    rpc PrintLicense (PrintLicenseRequest) returns (PrintResponse);
+}
+
+// ===
+
+message AddMemberRequest {
+    string name = 1;
+    string email = 2;
+    string username = 3;
+}
+
+message AddMemberResponse {
+    bool successful = 1;
+    string userid = 2;
+    string name = 3;
+} 
+
+// ===
+
+message LicenseMemberRequest {
+    string userid = 1;
+    string name = 2;
+} 
+
+message LicenseMemberResponse {
+    bool successful = 1;
+    string license_id = 2;
+}
+
+// ===
+
+message PrintCardRequest {
+    string userid = 1;
+    string name = 2;
+}
+
+// ===
+
+message PrintLicenseRequest {
+    string userid = 1;
+    string name = 2;
+    string license_id = 3;
+}
+
+// ===
+
+message PrintResponse {
+    bool successful = 1;
+}

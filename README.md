@@ -6,6 +6,16 @@ We want to use `dapr` with `dapr-rs`, but also wants to run `actix-web` and othe
 
 `dapr-rust-sdk` is only with very basic sample on `tokio`, but what we want to do is more :) We want to combine all of them together (`dapr` + `actix-web` + `tokio` + `tonic`). Let do it to see how far we can go there :)
 
+## Design
+
+| Event          | Publisher |   Consumers    | Response                                       |
+|:---------------|:---------:|:--------------:|:-----------------------------------------------|
+| MemberAdded    |  Member   |      Card      | <- MemberAddedResponse <br> -> PrintCard       |
+| MemberLicensed |  Member   | Card , License | <- MemberLicensedResponse <br> -> PrintLicense |
+| CardPrinted    |   Card    |       -        | <- PrintResponse                               |
+| LicensePrinted |  License  |       -        | <- PrintResponse                               |
+
+
 # How to run
 
 Make sure you have `dapr` CLI on local machine:

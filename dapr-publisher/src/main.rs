@@ -2,6 +2,8 @@ use std::{collections::HashMap, thread, time::Duration};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    initiate_logging();
+    info!("*** Welcome from dapr-subsciper's Service");
     // TODO: Handle this issue in the sdk
     // Introduce delay so that dapr grpc port is assigned before app tries to connect
     thread::sleep(Duration::from_secs(2));
@@ -47,4 +49,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
+}
+
+pub fn initiate_logging() {
+    env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    // std::env::set_var("RUST_LOG", "debug, actix_web=debug");
+
+    std::env::set_var("RUST_LOG", "info");
+
+    // let env = std::env::var("ADDRESS").expect("'.env' not found.");
+    // dbg!(env);
+
+    env_logger::init();
 }

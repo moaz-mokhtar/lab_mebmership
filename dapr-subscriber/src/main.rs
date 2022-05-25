@@ -101,7 +101,7 @@ async fn index() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    
 
     tokio::spawn(async move {
         let port = 50010;
@@ -127,4 +127,16 @@ async fn main() -> std::io::Result<()> {
         .bind("0.0.0.0:8088")?
         .run()
         .await
+}
+
+pub fn initiate_logging() {
+    env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    // std::env::set_var("RUST_LOG", "debug, actix_web=debug");
+
+    std::env::set_var("RUST_LOG", "info");
+
+    // let env = std::env::var("ADDRESS").expect("'.env' not found.");
+    // dbg!(env);
+
+    env_logger::init();
 }

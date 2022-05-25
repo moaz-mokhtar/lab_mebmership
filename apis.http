@@ -1,0 +1,29 @@
+# dapr-subscriberapp
+GET http://localhost:8088/index.html HTTP/1.0
+
+###
+
+# member
+GET http://127.0.0.1:8000/api/ HTTP/1.0
+
+###
+
+POST http://localhost:8000/api/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ahmed Ali",
+    "email": "ahmed.ali@email.co",
+    "username": "ahmed.ali"
+}
+
+###
+
+POST http://localhost:8000/api/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Moaz Mokhtar",
+    "email": "moaz.mokhtar@email.co",
+    "username": "moaz.mokhtar"
+}
